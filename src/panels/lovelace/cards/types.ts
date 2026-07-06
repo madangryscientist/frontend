@@ -699,7 +699,6 @@ export interface ShortcutCardConfig extends LovelaceCardConfig {
 
 export interface SecurityAlertsCardConfig extends LovelaceCardConfig {
   alert_entities: SecurityAlertEntityConfig[];
-  heading_card_id?: string;
 }
 
 export interface ToggleGroupCardConfig extends LovelaceCardConfig {
