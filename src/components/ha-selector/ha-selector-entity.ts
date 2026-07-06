@@ -4,6 +4,7 @@ import { html, LitElement, nothing } from "lit";
 import { customElement, property, state } from "lit/decorators";
 import { ensureArray } from "../../common/array/ensure-array";
 import { fireEvent } from "../../common/dom/fire_event";
+import type { HaEntityPickerEntityFilterFunc } from "../../data/entity/entity";
 import type { EntitySources } from "../../data/entity/entity_sources";
 import { fetchEntitySourcesWithCache } from "../../data/entity/entity_sources";
 import type { EntitySelector } from "../../data/selector";
@@ -34,6 +35,10 @@ export class HaEntitySelector extends LitElement {
   @property({ type: Boolean }) public disabled = false;
 
   @property({ type: Boolean }) public required = true;
+
+  @property({ attribute: false }) public context?: {
+    entityFilter?: HaEntityPickerEntityFilterFunc;
+  };
 
   @state() private _createDomains: string[] | undefined;
 
@@ -111,6 +116,9 @@ export class HaEntitySelector extends LitElement {
   }
 
   private _filterEntities = (entity: HassEntity): boolean => {
+    if (this.context?.entityFilter && !this.context.entityFilter(entity)) {
+      return false;
+    }
     if (!this.selector?.entity?.filter) {
       return true;
     }
