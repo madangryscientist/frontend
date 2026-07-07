@@ -2579,7 +2579,7 @@
       },
       "security": {
         "editor": {
-          "title": "Edit Security and Safety page",
+          "title": "Edit security and safety page",
           "description": "Configure your security and safety display preferences.",
           "active_alert_entities": "Active alert entities",
           "active_alert_entities_description": "Display any entities that require attention.",
@@ -2592,7 +2592,7 @@
           },
           "pulse": "Pulsate",
           "visibility_conditions": "Visibility conditions",
-          "save_failed": "Failed to save Security and Safety page configuration"
+          "save_failed": "Failed to save security and safety page configuration"
         }
       },
       "my": {
