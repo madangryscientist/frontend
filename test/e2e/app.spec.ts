@@ -260,5 +260,9 @@ test.describe("Config panel", () => {
     return dashboard;
   };
 
-  defineLinkSmokeTests(configLinks, getDashboard);
+  defineLinkSmokeTests(
+    "config links point to expected pages",
+    configLinks,
+    getDashboard
+  );
 });
