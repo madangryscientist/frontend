@@ -41,21 +41,23 @@ For focused type feedback on one file, use editor diagnostics instead of a file-
 
 `yarn dev:serve` also serves locally and supports `-c` for the core URL and `-p` for the port. Default local serving port is 8124.
 
-Dev server commands support `--background`, `--status`, `--stop`, and `--logs [--follow]`.
+Dev server commands support `--background`, `--status`, `--stop`, and `--logs [--follow]`. Prefer managed background mode while iterating so the watcher stays available across test runs without occupying the terminal.
 
 ## Playwright E2E
 
-Each suite has its own dev server port. Playwright reuses an existing server locally when the port is already running; otherwise it performs a slow full build. The rspack watcher recompiles on save, so reruns should not need a restart.
+Each suite has its own dev server port. Prefer running the relevant server in the background while iterating. Playwright reuses it when the port is already running; otherwise it performs a slow full build. The rspack watcher recompiles on save, so reruns should not need a restart.
 
 Start the relevant suite server, then run that suite:
 
-| Suite   | Server                          | Test command            |
-| ------- | ------------------------------- | ----------------------- |
-| App     | `yarn test:e2e:app:dev` on 8095 | `yarn test:e2e:app`     |
-| Demo    | `yarn dev:demo` on 8090         | `yarn test:e2e:demo`    |
-| Gallery | `yarn dev:gallery` on 8100      | `yarn test:e2e:gallery` |
+| Suite   | Background server                            | Test command            |
+| ------- | -------------------------------------------- | ----------------------- |
+| App     | `yarn test:e2e:app:dev --background` on 8095 | `yarn test:e2e:app`     |
+| Demo    | `yarn dev:demo --background` on 8090         | `yarn test:e2e:demo`    |
+| Gallery | `yarn dev:gallery --background` on 8100      | `yarn test:e2e:gallery` |
 
-Server reuse and `--stop` use the `/__ha_dev_status` health check, so starting or stopping twice is harmless.
+Use the same server command with `--status`, `--logs [--follow]`, or `--stop` to manage it. Server reuse and `--stop` use the `/__ha_dev_status` health check, so starting or stopping twice is harmless.
+
+Local runs against a watched development server do not always match CI's clean build artifacts, environment, sharding, or worker configuration. Use background servers for the fast iteration loop, but confirm the relevant CI jobs complete successfully before considering E2E changes verified.
 
 Use `-g "<title>" --project=chromium` to narrow a run. `yarn test:e2e` runs all three suites. Run suites directly; piping through output truncation hides progress and failures.
 
