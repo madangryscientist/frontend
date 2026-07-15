@@ -311,6 +311,25 @@ export interface GaugeCardConfig extends LovelaceCardConfig {
   double_tap_action?: ActionConfig;
 }
 
+export interface GateWidgetCardColors {
+  closed?: string;
+  opening?: string;
+  closing?: string;
+  paused?: string;
+  open?: string;
+}
+
+export interface GateWidgetCardConfig extends LovelaceCardConfig {
+  type: "gate-widget-card";
+  entity: string;
+  state_entity?: string;
+  height?: number;
+  colors?: GateWidgetCardColors;
+  tap_action?: ActionConfig;
+  hold_action?: ActionConfig;
+  double_tap_action?: ActionConfig;
+}
+
 export interface ActionsConfig {
   tap_action?: ActionConfig;
   hold_action?: ActionConfig;

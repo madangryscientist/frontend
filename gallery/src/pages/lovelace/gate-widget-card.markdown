@@ -1,0 +1,3 @@
+---
+title: Gate Widget Card
+---

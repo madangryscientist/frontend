@@ -9726,6 +9726,10 @@
             "entity-row": {
               "secondary_info": "Secondary information"
             },
+            "gate-widget-card": {
+              "name": "Gate widget",
+              "description": "This card displays a vertical fill visualising the position of a gate or garage door based on a percentage sensor."
+            },
             "gauge": {
               "name": "Gauge",
               "needle_gauge": "Display as needle gauge",

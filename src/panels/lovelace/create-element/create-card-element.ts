@@ -82,6 +82,7 @@ const LAZY_LOAD_TYPES = {
   repairs: () => import("../cards/hui-repairs-card"),
   updates: () => import("../cards/hui-updates-card"),
   gauge: () => import("../cards/hui-gauge-card"),
+  "gate-widget-card": () => import("../cards/hui-gate-widget-card"),
   "history-graph": () => import("../cards/hui-history-graph-card"),
   "horizontal-stack": () => import("../cards/hui-horizontal-stack-card"),
   distribution: () => import("../cards/hui-distribution-card"),

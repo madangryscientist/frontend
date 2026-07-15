@@ -26,6 +26,10 @@ export const coreCards: Card[] = [
     showElement: true,
   },
   {
+    type: "gate-widget-card",
+    showElement: true,
+  },
+  {
     type: "gauge",
     showElement: true,
   },
